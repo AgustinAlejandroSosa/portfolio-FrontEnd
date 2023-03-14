@@ -1,0 +1,14 @@
+.body{
+}
+
+.banner-img{
+  width: 100%;
+  height: 30rem;
+}
+
+.face-image{
+  margin-top: -200px;
+  width: 320px;
+  height: 320px;
+  border-radius: 30rem;
+}

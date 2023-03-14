@@ -1,0 +1,7 @@
+
+.logo{
+  width: 150px;
+  border-radius: 50rem;
+  aspect-ratio: 5/4;
+  object-fit: contain;
+}

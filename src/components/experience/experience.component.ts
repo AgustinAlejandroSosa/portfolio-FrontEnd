@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class ExperienceComponent {
   title:string = "title"
   description:string = " description "
+  year:string= "2021"
 }

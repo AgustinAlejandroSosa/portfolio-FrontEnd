@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class EducationComponent {
   title:string = "title"
-
+  year:string = "2021"
   description:string = "description"
 }

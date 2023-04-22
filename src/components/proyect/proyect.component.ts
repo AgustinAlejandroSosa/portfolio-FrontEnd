@@ -9,4 +9,6 @@ export class ProyectComponent {
   title:string = "title"
   stack:string = "Js Bootstrap & MERN"
   link:string = "https://www.github.com/AgustinAlejandroSosa"
+  description:string = "20/08/2021"
+  deployLink?:string
 }

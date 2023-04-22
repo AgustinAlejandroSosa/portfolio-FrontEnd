@@ -8,6 +8,11 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { SoftSkillComponent } from './components/soft-skill/soft.skill.component';
 import { ProyectComponent } from './components/proyect/proyect.component';
 import { HardSkillComponent } from './components/hard-skill/hard-skill.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './components/login/login.component';
+import { Error404Component } from './components/error404/error404.component';
+import { MainComponent } from './components/main/main.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,10 +24,16 @@ import { HardSkillComponent } from './components/hard-skill/hard-skill.component
     HardSkillComponent,
     SoftSkillComponent,
     ProyectComponent,
-    HardSkillComponent
+    HardSkillComponent,
+    LoginComponent,
+    Error404Component,
+    MainComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './hard-skill.component.html',
   styleUrls: ['./hard-skill.component.css']
 })
-export class HardSkillComponent {
 
+export class HardSkillComponent {
+  text:string = ""
+  img:string = ""
 }

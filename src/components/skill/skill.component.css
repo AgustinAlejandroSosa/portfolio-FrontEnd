@@ -1,0 +1,55 @@
+.img-skill{
+  width: 150px;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.edit-button{
+  position: relative;
+  bottom: 10rem;
+  left: 3rem;
+  cursor: pointer;
+}
+
+@media (max-width:1199px){
+  .edit-button{
+    position: relative;
+    bottom: 10rem;
+    left: 3rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .edit-button{
+    position: relative;
+    bottom: 10rem;
+    left: 3rem;
+    cursor: pointer;
+  }
+}
+
+.delete-button{
+  position: relative;
+  bottom: 10rem;
+  left: 3rem;
+  cursor: pointer;
+}
+
+@media (max-width:1199px){
+  .delete-button{
+    position: relative;
+    bottom: 10rem;
+    left: 3rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .delete-button{
+    position: relative;
+    bottom: 10rem;
+    left: 3rem;
+    cursor: pointer;
+  }
+}

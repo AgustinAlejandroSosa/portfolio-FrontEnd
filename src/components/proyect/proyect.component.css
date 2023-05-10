@@ -1,0 +1,116 @@
+.edit-button{
+  position: relative;
+  top: 3rem;
+  left: 74rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media (max-width:1400px){
+  .edit-button{
+    position: relative;
+    top: 3rem;
+    left: 63rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media (max-width:1199px){
+  .edit-button{
+    position: relative;
+    top: 3rem;
+    left: 52rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media (max-width:992px){
+  .edit-button{
+    position: relative;
+    top: 3rem;
+    left: 37rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media (max-width:768px){
+  .edit-button{
+    position: relative;
+    top: 3rem;
+    left: 24rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media (max-width:575px){
+  .edit-button{
+    position: relative;
+    top: 3rem;
+    left: 1rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+.delete-button{
+  position: relative;
+  top: 3rem;
+  left: 75rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media (max-width:1400px){
+  .delete-button{
+    position: relative;
+    top: 3rem;
+    left: 64rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media (max-width:1199px){
+  .delete-button{
+    position: relative;
+    top: 3rem;
+    left: 53rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media (max-width:992px){
+  .delete-button{
+    position: relative;
+    top: 3rem;
+    left: 38rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+@media (max-width:768px){
+  .delete-button{
+    position: relative;
+    top: 3rem;
+    left: 24rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+
+@media (max-width:575px){
+  .delete-button{
+    position: relative;
+    top: 3rem;
+    left: 1rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+}

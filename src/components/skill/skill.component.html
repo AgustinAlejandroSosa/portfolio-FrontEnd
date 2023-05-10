@@ -1,7 +1,11 @@
-<!-- Proyects start-->
+<!-- Soft Skills start -->
+<div class="col text-center">
+  <img class="img-skill" src="/assets/img/researcher.png" alt="investigador" />
+  <p>{{ text }}</p>
+</div>
 <div
   *ngIf="isLogged"
-  class="btn btn-success btn-lg rounded-circle justify-content-center edit-button"
+  class="btn btn-success rounded-circle justify-content-center edit-button"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +22,7 @@
 </div>
 <div
   *ngIf="isLogged"
-  class="btn btn-danger btn-lg rounded-circle justify-content-center delete-button"
+  class="btn btn-danger rounded-circle justify-content-center delete-button"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -33,19 +37,4 @@
     />
   </svg>
 </div>
-<div class="card border-dark shadow m-2">
-  <a target="_blank" href="{{ link }}">
-    <img src="/assets/img/cepyc.png" class="card-img-top" alt="cepyc" />
-  </a>
-  <div class="card-body text-center">
-    <h5 class="card-title mb-3">{{ title }}</h5>
-    <p class="card-text">
-      {{ description }}
-    </p>
-    <a target="_blank" href="{{ link }}" class="btn btn-primary bg-gradient"
-      >Ir al repositorio</a
-    >
-  </div>
-</div>
-
-<!-- Proyects start-->
+<!-- Hard & Soft Skills end -->

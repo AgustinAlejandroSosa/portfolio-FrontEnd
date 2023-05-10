@@ -1,9 +1,196 @@
-.body{
+
+.preview{
+  width: 70%;
+  aspect-ratio: 4/3;
 }
+
+.preview-profile{
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
+.description-input{
+  height: 10rem;
+}
+
+.min-description{
+  min-height: 15rem;
+  align-items: center;
+}
+
+.edit-banner{
+  position: relative;
+  bottom: 24rem;
+  left: 1%;
+  cursor: pointer;
+}
+
+.delete-banner{
+  position: relative;
+  border-collapse: collapse;
+  bottom: 24rem;
+  left: 2%;
+  cursor: pointer;
+}
+
+@media (max-width:992px){
+  .edit-banner{
+    position: relative;
+    bottom: 24rem;
+    left: 1%;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .delete-banner{
+    position: relative;
+    bottom: 24rem;
+    left: 2%;
+    cursor: pointer;
+  }
+}
+
+.edit-photo{
+  position: relative;
+  top: -23rem;
+  left: 6rem;
+  cursor: pointer;
+}
+
+@media (max-width:1199px){
+  .edit-photo{
+    position: relative;
+    top: -23rem;
+    left: 6rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .edit-photo{
+    position: relative;
+    top: -18rem;
+    left: 4rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:768px){
+  .edit-photo{
+    position: relative;
+    top: -23rem;
+    left: 6rem;
+    cursor: pointer;
+  }
+}
+
+.edit-title{
+  position: relative;
+    top: -8rem;
+    left: 9rem;
+    cursor: pointer;
+}
+
+@media (max-width:1199px){
+  .edit-title{
+    position: relative;
+    top: -8rem;
+    left: 9rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .edit-title{
+    position: relative;
+    top: -8rem;
+    left: 7rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:768px){
+  .edit-title{
+    position: relative;
+    top: -7rem;
+    left: 8rem;
+    cursor: pointer;
+  }
+}
+
+.edit-description{
+  position: relative;
+    bottom: 18rem;
+    left: 46rem;
+    cursor: pointer;
+}
+
+@media (max-width:1199px){
+  .edit-description{
+    position: relative;
+    bottom: 19rem;
+    left: 37rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .edit-description{
+    position: relative;
+    bottom: 20rem;
+    left: 28rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:768px){
+  .edit-description{
+    position: relative;
+    bottom: 21rem;
+    left: 0rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:476px){
+  .edit-description{
+    position: relative;
+    bottom: 22rem;
+    left: 0rem;
+    cursor: pointer;
+  }
+}
+
+
+@media (max-width:420px){
+  .edit-description{
+    position: relative;
+    bottom: 20rem;
+    left: 0rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:378px){
+  .edit-description{
+    position: relative;
+    bottom: 28rem;
+    left: 1rem;
+    cursor: pointer;
+  }
+}
+
 
 .banner-img{
   width: 100%;
   height: 25rem;
+}
+
+.banner-img-empty{
+  width:100%;
+  height: 25rem;
+  background:linear-gradient(to bottom left, #66c3e2, #f167ac);
 }
 
 .face-image{

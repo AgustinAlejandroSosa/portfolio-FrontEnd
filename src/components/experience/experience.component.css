@@ -1,7 +1,141 @@
-
 .logo{
   width: 150px;
   border-radius: 50rem;
   aspect-ratio: 5/4;
   object-fit: contain;
+  margin-top: -2em;
+}
+
+@media (max-width:768px){
+  .logo{
+    width: 150px;
+    border-radius: 50rem;
+    aspect-ratio: 5/4;
+    object-fit: contain;
+    margin-top: -4em;
+  }
+}
+
+.edit-button{
+  position: relative;
+  bottom: 5rem;
+  left: 48rem;
+  cursor: pointer;
+}
+
+@media (max-width:1199px){
+  .edit-button{
+    position: relative;
+    bottom: 5rem;
+    left: 48rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .edit-button{
+    position: relative;
+    bottom: 4rem;
+    left: 45rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:849px){
+  .edit-button{
+    position: relative;
+    bottom: 4rem;
+    left: 30rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:768px){
+  .edit-button{
+    position: relative;
+    bottom: 3rem;
+    left: 28rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:612px){
+  .edit-button{
+    position: relative;
+    bottom: 3rem;
+    left: 24rem;
+    cursor: pointer;
+  }
+}
+
+
+@media (max-width:534px){
+  .edit-button{
+    position: relative;
+    bottom: 3rem;
+    left: 16rem;
+    cursor: pointer;
+  }
+}
+
+.delete-button{
+  position: relative;
+  bottom: 5rem;
+  left: 49rem;
+  cursor: pointer;
+}
+
+@media (max-width:1199px){
+  .delete-button{
+    position: relative;
+    bottom: 5rem;
+    left: 49rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:992px){
+  .delete-button{
+    position: relative;
+    bottom: 4rem;
+    left: 46rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:849px){
+  .delete-button{
+    position: relative;
+    bottom: 4rem;
+    left: 31rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:768px){
+  .delete-button{
+    position: relative;
+    bottom: 3rem;
+    left: 29rem;
+    cursor: pointer;
+  }
+}
+
+@media (max-width:612px){
+  .delete-button{
+    position: relative;
+    bottom: 3rem;
+    left: 25rem;
+    cursor: pointer;
+  }
+}
+
+
+@media (max-width:534px){
+  .delete-button{
+    position: relative;
+    bottom: 3rem;
+    left: 17rem;
+    cursor: pointer;
+  }
 }

@@ -1,0 +1,12 @@
+.background-color{
+  background-color: linear-gradient(to bottom, #000080, #6495ED) !important;
+}
+
+.login{
+  margin-top: -4em;
+}
+
+.hr{
+  color: black;
+  background-color: black;
+}

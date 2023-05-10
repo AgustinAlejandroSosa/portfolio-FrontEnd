@@ -1,0 +1,102 @@
+<section>
+  <div class="d-flex justify-content-center">
+    <div
+      *ngIf="isLogged"
+      data-bs-toggle="modal"
+      data-bs-target="#add-experience"
+      class="btn mb-5 btn-primary rounded-circle btn-lg justify-content-center add-experience"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="40"
+        fill="currentColor"
+        class="bi bi-plus-lg"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+        />
+      </svg>
+    </div>
+    <h2 class="text-center mb-5">Experiencia</h2>
+  </div>
+
+  <form #myForm (ngSubmit)="enviarFecha()">
+    <label for="date">Fecha:</label>
+    <input class="form-control"
+           placeholder="dd-mm-yyyy"
+           name="appointmentTime"
+           [(ngModel)]="date"
+           ngbDatepicker #d="ngbDatepicker">
+  
+    <button type="submit">Guardar</button>
+  </form>
+
+  <app-experience [isLogged]="isLogged"></app-experience>
+
+  <!-- Add modal -->
+
+  <div
+    class="modal fade"
+    id="add-experience"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Añadir experiencia</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label fs-5">Título</label>
+              <input class="form-control" type="text" />
+            </div>
+            <div class="col-6">
+              <label class="form-label fs-5">Año finalización</label>
+              <input class="form-control" type="text" />
+            </div>
+            <div class="col-12">
+              <label class="form-label fs-5">Descripción</label>
+              <p *ngIf="experience">
+                {{ experience.description.length }} / {{ remaining }}
+              </p>
+              <textarea
+                *ngIf="experience"
+                maxlength="150"
+                class="form-control description-input"
+                type="text"
+                [(ngModel)]="experience.description"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button
+            (click)="onSaveExperience()"
+            type="button"
+            class="btn btn-primary"
+          >
+            Añadir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

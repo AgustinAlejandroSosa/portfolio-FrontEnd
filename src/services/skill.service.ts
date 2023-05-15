@@ -1,40 +1,49 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Skill } from 'src/models/skill';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SkillService {
-
   private apiUrl = 'http://localhost:8080/skill';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
-  // Método para obtener todos los elementos
+  getHardSkills(): Observable<Skill[]> {
+
+    return this.http.get<Skill[]>(`${this.apiUrl}/get/hard`);
+  }
+
+  getSoftSkills(): Observable<Skill[]> {
+
+    return this.http.get<Skill[]>(`${this.apiUrl}/get/soft`);
+  }
+
   getAll(): Observable<Skill[]> {
+
     return this.http.get<Skill[]>(`${this.apiUrl}/get`);
   }
 
-  // Método para obtener un elemento por su ID
   getById(id: number): Observable<Skill> {
-    return this.http.get<Skill>(`${this.apiUrl}/${id}`);
+    return this.http.get<Skill>(`${this.apiUrl}/get/${id}`);
   }
 
-  // Método para crear un nuevo elemento
-  create(skill: Skill): Observable<Skill> {
-    return this.http.post<Skill>(`${this.apiUrl}`, skill);
+  create(skill: FormData): Observable<any> {
+    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.tokenService.getToken() });
+    return this.http.post<any>(`${this.apiUrl}`, skill, { headers });
   }
 
-  // Método para actualizar un elemento existente
-  update(id: number, skill: Skill): Observable<Skill> {
-    return this.http.put<Skill>(`${this.apiUrl}/${id}`, skill);
+  update(id: number, skill: FormData): Observable<Skill> {
+    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.tokenService.getToken() });
+    return this.http.put<Skill>(`${this.apiUrl}/edit/${id}`, skill, { headers });
   }
 
-  // Método para eliminar un elemento existente
   delete(id: number): Observable<Skill> {
-    return this.http.delete<Skill>(`${this.apiUrl}/${id}`);
+    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.tokenService.getToken() });
+    return this.http.delete<Skill>(`${this.apiUrl}/delete/${id}`, { headers });
   }
 
 }

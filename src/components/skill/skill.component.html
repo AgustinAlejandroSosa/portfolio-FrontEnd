@@ -1,9 +1,21 @@
 <!-- Soft Skills start -->
 <div class="col text-center">
-  <img class="img-skill" src="/assets/img/researcher.png" alt="investigador" />
-  <p>{{ text }}</p>
+  <img
+        *ngIf="item.imageUrl"
+        class="img-skill"
+        [src]="item.imageUrl"
+        alt="skill"
+      />
+      <img
+        *ngIf="!item.imageUrl"
+        class="img-skill"
+        src="/assets/img/hardSkillDefault.png"
+        alt="skill"
+      />
+  <p>{{ name }}</p>
 </div>
 <div
+  (click)="resetLogo()"
   *ngIf="isLogged"
   class="btn btn-success rounded-circle justify-content-center edit-button"
 >
@@ -21,6 +33,7 @@
   </svg>
 </div>
 <div
+  (click)="onDeleteSkill()"
   *ngIf="isLogged"
   class="btn btn-danger rounded-circle justify-content-center delete-button"
 >
@@ -37,4 +50,98 @@
     />
   </svg>
 </div>
+
+<!-- Edit modal -->
+<div
+  class="modal fade"
+  id={{editID}}
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Editar Skill</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="logo" class="row">
+          <div class="col">
+            <label class="form-label fs-5">Logo / Imagen</label>
+            <input type="file" (change)="onChangeLogo($event)" />
+          </div>
+          <div class="col">
+            <img
+              *ngIf="previewLogo"
+              class="preview-logo"
+              [src]="previewLogo"
+              alt="profile"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div
+            *ngIf="!logoDecision"
+            class="col-12 d-flex justify-content-around mb-2"
+          >
+            <label class="form-label fs-5">¿Agregar logo?</label>
+            <span (click)="addLogo()" class="btn btn-success"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-check-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                />
+              </svg>
+            </span>
+            <span (click)="noLogo()" class="btn btn-danger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-x-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div *ngIf="editSkill" class="col-12">
+            <label class="form-label fs-5">Nombre</label>
+            <input
+              *ngIf="editSkill.name"
+              required="required"
+              [(ngModel)]="editSkill.name"
+              class="form-control"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button (click)="onEditSkill()" type="button" class="btn btn-primary">
+          Añadir
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Hard & Soft Skills end -->

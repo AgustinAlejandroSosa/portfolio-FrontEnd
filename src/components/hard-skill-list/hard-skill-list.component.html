@@ -1,6 +1,129 @@
 <section>
-  <h2 class="text-center pb-5">Hard Skills</h2>
-  <div class="d-flex flex-wrap justify-content-center">
-    <app-skill [isLogged]="isLogged"></app-skill>
+  <div class="d-flex justify-content-center">
+    <div
+      *ngIf="isLogged"
+      (click)="resetLogo()"
+      data-bs-toggle="modal"
+      data-bs-target="#add-hard-skill"
+      class="btn mb-5 btn-primary rounded-circle btn-lg justify-content-center add-hard-skill"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="40"
+        fill="currentColor"
+        class="bi bi-plus-lg"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+        />
+      </svg>
+    </div>
+    <h2 class="text-center pb-5">Hard Skills</h2>
+  </div>
+  <div *ngIf="items">
+    <div class="d-flex flex-wrap justify-content-center">
+      <app-skill
+        *ngFor="let item of items"
+        [item]="item"
+        [isLogged]="isLogged"
+      ></app-skill>
+    </div>
+    <h3 *ngIf="!items.length" class="text-center mb-5">
+      La lista de hard skills esta vacía
+    </h3>
   </div>
 </section>
+
+<!-- Add modal -->
+<div
+  class="modal fade"
+  id="add-hard-skill"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Añadir Hard Skill</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="logo" class="row">
+          <div class="col">
+            <label class="form-label fs-5">Logo / Imagen</label>
+            <input type="file" (change)="onChangeLogo($event)" />
+          </div>
+          <div class="col">
+            <img
+              *ngIf="previewLogo"
+              class="preview-logo"
+              [src]="previewLogo"
+              alt="profile"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div
+            *ngIf="!logoDecision"
+            class="col-12 d-flex justify-content-around mb-2"
+          >
+            <label class="form-label fs-5">¿Agregar logo?</label>
+            <span (click)="addLogo()" class="btn btn-success"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-check-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                />
+              </svg>
+            </span>
+            <span (click)="noLogo()" class="btn btn-danger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-x-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="col-12">
+            <label class="form-label fs-5">Nombre</label>
+            <input
+              required="required"
+              [(ngModel)]="skill.name"
+              class="form-control"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button (click)="onSaveSkill()" type="button" class="btn btn-primary">
+          Añadir
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

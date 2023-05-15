@@ -2,13 +2,14 @@
   <div class="d-flex justify-content-center">
     <div
       *ngIf="isLogged"
+      (click)="resetLogo()"
       data-bs-toggle="modal"
       data-bs-target="#add-education"
       class="btn mb-5 btn-primary rounded-circle btn-lg justify-content-center add-education"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="30"
+        width="25"
         height="40"
         fill="currentColor"
         class="bi bi-plus-lg"
@@ -22,69 +23,132 @@
     </div>
     <h2 class="text-center mb-5">Educación</h2>
   </div>
-  <app-experience [isLogged]="isLogged"></app-experience>
+  <div *ngIf="items">
+    <app-experience
+      *ngFor="let item of items"
+      [item]="item"
+      [isLogged]="isLogged"
+    ></app-experience>
+    <h3 *ngIf="!items.length" class="text-center mb-2">
+      La lista de educación esta vacía
+    </h3>
+  </div>
 </section>
 
 <!-- add modal -->
 
 <div
-class="modal fade"
-id="add-education"
-data-bs-backdrop="static"
-data-bs-keyboard="false"
-tabindex="-1"
+  class="modal fade"
+  id="add-education"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
 >
-<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="staticBackdropLabel">Añadir experiencia</h5>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="modal"
-      ></button>
-    </div>
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-6">
-          <label class="form-label fs-5">Título</label>
-          <input class="form-control" type="text" />
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Añadir educación</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="logo" class="row">
+          <div class="col">
+            <label class="form-label fs-5">Logo / Imagen</label>
+            <input type="file" (change)="onChangeLogo($event)" />
+          </div>
+          <div class="col">
+            <img
+              *ngIf="previewLogo"
+              class="preview-logo"
+              [src]="previewLogo"
+              alt="profile"
+            />
+          </div>
         </div>
-        <div class="col-6">
-          <label class="form-label fs-5">Año finalización</label>
-          <input class="form-control" type="text" />
-        </div>
-        <div class="col-12">
-          <label class="form-label fs-5">Descripción</label>
-          <p *ngIf="education">
-            {{ education.description.length }} / {{ remaining }}
-          </p>
-          <textarea
-            *ngIf="education"
-            maxlength="150"
-            class="form-control description-input"
-            type="text"
-            [(ngModel)]="education.description"
-          ></textarea>
+        <div class="row">
+          <div
+            *ngIf="!logoDecision"
+            class="col-12 d-flex justify-content-around mb-2"
+          >
+            <label class="form-label fs-5">¿Agregar logo?</label>
+            <span (click)="addLogo()" class="btn btn-success"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-check-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                />
+              </svg>
+            </span>
+            <span (click)="noLogo()" class="btn btn-danger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-x-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="col-12">
+            <label class="form-label fs-5">Título</label>
+            <input
+              required="required"
+              [(ngModel)]="education.title"
+              class="form-control"
+              type="text"
+            />
+          </div>
+          <div class="col-6">
+            <label class="form-label fs-5">Fecha inicio</label>
+            <input class="form-control" type="date" [(ngModel)]="dateSince" />
+          </div>
+          <div class="col-6">
+            <label class="form-label fs-5">Fecha finalización</label>
+            <input class="form-control" type="date" [(ngModel)]="dateTo" />
+          </div>
+          <div class="col-12">
+            <label class="form-label fs-5">Descripción</label>
+            <p *ngIf="education">
+              {{ education.description.length }} / {{ remaining }}
+            </p>
+            <textarea
+              required="required"
+              *ngIf="education"
+              maxlength="150"
+              class="form-control description-input"
+              type="text"
+              [(ngModel)]="education.description"
+            ></textarea>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-secondary"
-        data-bs-dismiss="modal"
-      >
-        Cancelar
-      </button>
-      <button
-        (click)="onSaveEducation()"
-        type="button"
-        class="btn btn-primary"
-      >
-        Añadir
-      </button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          (click)="onSaveEducation()"
+          type="button"
+          class="btn btn-primary"
+        >
+          Añadir
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </div>

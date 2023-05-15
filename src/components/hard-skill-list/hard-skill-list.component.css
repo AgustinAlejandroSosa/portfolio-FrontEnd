@@ -1,0 +1,11 @@
+.add-hard-skill{
+  position: relative;
+  bottom: 1rem;
+  right: 2rem;
+  cursor: pointer;
+}
+
+.preview-logo{
+  width: 100%;
+  aspect-ratio: 4/3;
+}

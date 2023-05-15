@@ -1,5 +1,6 @@
 <!-- Proyects start-->
 <div
+  (click)="resetLogo()"
   *ngIf="isLogged"
   class="btn btn-success btn-lg rounded-circle justify-content-center edit-button"
 >
@@ -17,6 +18,7 @@
   </svg>
 </div>
 <div
+  (click)="onDeleteProyect()"
   *ngIf="isLogged"
   class="btn btn-danger btn-lg rounded-circle justify-content-center delete-button"
 >
@@ -34,17 +36,203 @@
   </svg>
 </div>
 <div class="card border-dark shadow m-2">
-  <a target="_blank" href="{{ link }}">
-    <img src="/assets/img/cepyc.png" class="card-img-top" alt="cepyc" />
+  <a target="_blank" href="{{ item.repositoryLink }}">
+    <img
+      *ngIf="item.imageUrl"
+      class="card-img-top"
+      [src]="item.imageUrl"
+      alt="proyectImage"
+    />
+    <img
+      *ngIf="!item.imageUrl"
+      class="card-img-top"
+      src="/assets/img/defaultProyect.png"
+      alt="proyectImage"
+    />
   </a>
   <div class="card-body text-center">
-    <h5 class="card-title mb-3">{{ title }}</h5>
-    <p class="card-text">
-      {{ description }}
+    <h5 class="card-title mb-3">{{ item.title }}</h5>
+    <p>
+      {{ item.date }}
     </p>
-    <a target="_blank" href="{{ link }}" class="btn btn-primary bg-gradient"
+    <p class="card-text">
+      {{ item.description }}
+    </p>
+    <a
+      target="_blank"
+      href="{{ item.repositoryLink }}"
+      class="btn btn-primary bg-gradient"
       >Ir al repositorio</a
     >
+  </div>
+</div>
+
+<!-- Edit modal -->
+
+<div
+  class="modal fade"
+  id="{{ editID }}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+>
+  <div
+    *ngIf="date"
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Editar proyecto</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="logo" class="row">
+          <div class="col">
+            <label class="form-label fs-5">Logo / Imagen</label>
+            <input type="file" (change)="onChangeLogo($event)" />
+          </div>
+          <div class="col">
+            <img
+              *ngIf="previewLogo"
+              class="preview-logo"
+              [src]="previewLogo"
+              alt="profile"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div
+            *ngIf="!logoDecision"
+            class="col-12 d-flex justify-content-around mb-2"
+          >
+            <label class="form-label fs-5">Editar logo?</label>
+            <span (click)="addLogo()" class="btn btn-success"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-check-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                />
+              </svg>
+            </span>
+            <span (click)="noLogo()" class="btn btn-danger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-x-lg"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                />
+              </svg>
+            </span>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label class="m-1 form-label fs-5">Título</label>
+              <input
+                *ngIf="proyect"
+                class="form-control"
+                type="text"
+                [(ngModel)]="proyect.title"
+              />
+            </div>
+            <div
+              *ngIf="!editDateDecision"
+              class="col-12 d-flex justify-content-around m-2"
+            >
+              <label class="form-label fs-5 m-2">Editar fecha?</label>
+              <span (click)="onEditDate()" class="btn btn-success"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
+              <span (click)="noEditDate()" class="btn btn-danger">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-x-lg"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                  />
+                </svg>
+              </span>
+            </div>
+            <div *ngIf="editDate" class="col-12">
+              <label class="m-1 form-label fs-5">Fecha finalización</label>
+              <input
+                class="form-control"
+                type="date"
+                [(ngModel)]="proyect.date"
+              />
+            </div>
+            <div class="col-12">
+              <label class="form-label fs-5">Descripción</label>
+              <p *ngIf="proyect">
+                {{ proyect.description.length }} / {{ remaining }}
+              </p>
+              <textarea
+                *ngIf="proyect"
+                maxlength="150"
+                class="form-control description-input"
+                type="text"
+                [(ngModel)]="proyect.description"
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label fs-5">Repositorio</label>
+              <input
+                *ngIf="proyect"
+                class="form-control description-input"
+                type="text"
+                [(ngModel)]="proyect.repositoryLink"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button
+            (click)="onEditProyect()"
+            type="button"
+            class="btn btn-primary"
+          >
+            Aplicar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

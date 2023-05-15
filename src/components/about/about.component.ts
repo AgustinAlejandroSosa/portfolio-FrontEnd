@@ -29,7 +29,7 @@ export class AboutComponent implements OnInit {
   description: string;
   profileImg: string;
 
-  constructor(private imageService: ImageService, private tokenService: TokenService, private bannerService: BannerService, private profileService: ProfileService, private base64Service: Base64Service) { }
+  constructor(private tokenService: TokenService, private bannerService: BannerService, private profileService: ProfileService, private base64Service: Base64Service) { }
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -44,16 +44,15 @@ export class AboutComponent implements OnInit {
 
     this.profileService.get().subscribe(res => {
       if (res != null) {
-        this.name = res.name
-        this.position = res.position
-        this.description = res.description
+        this.name = res.name || "Nombre"
+        this.position = res.position || "Posición"
+        this.description = res.description || "Breve descripción de la persona"
+        this.profile = new Profile(res.name || "Nombre", res.position || "Posición", res.description || "Breve descripción de la persona")
 
         if (res.imageUrl) {
           this.profileImg = res.imageUrl;
-          this.profile = new Profile(res.name, res.position, res.description);
           this.profile.imageUrl = res.imageUrl;
         } else {
-          this.profile = new Profile(res.name, res.position, res.description);
           this.profileImg = "../../assets/img/perfil.png"
         }
 
@@ -119,4 +118,9 @@ export class AboutComponent implements OnInit {
     this.remaining = 300 - description.length;
   }
 
+  resetState() {
+    this.profile.name = this.name
+    this.profile.description = this.description
+    this.profile.position = this.position
+  }
 }

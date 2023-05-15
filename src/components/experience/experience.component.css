@@ -6,6 +6,11 @@
   margin-top: -2em;
 }
 
+.preview-logo{
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+
 @media (max-width:768px){
   .logo{
     width: 150px;

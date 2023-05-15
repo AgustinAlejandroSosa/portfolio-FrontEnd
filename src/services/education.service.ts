@@ -7,9 +7,9 @@ import { TokenService } from './token.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ExperienceService {
+export class EducationService {
 
-  private apiUrl = 'http://localhost:8080/experience';
+  private apiUrl = 'http://localhost:8080/education';
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 
@@ -18,8 +18,7 @@ export class ExperienceService {
   }
 
   getById(id: number): Observable<Experience> {
-    let headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.tokenService.getToken() });
-    return this.http.get<Experience>(`${this.apiUrl}/get/${id}`,{ headers });
+    return this.http.get<Experience>(`${this.apiUrl}/${id}`);
   }
 
   create(experience: FormData): Observable<any> {

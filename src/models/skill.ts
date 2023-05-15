@@ -1,8 +1,11 @@
 export class Skill {
+  id?:number
   name: string
-  srcImg: string
-  constructor (name:string, srcImg:string){
+  imageUrl: string
+  hard:boolean
+  constructor (name:string, imageUrl:string,hard:boolean){
     this.name = name
-    this.srcImg = srcImg
+    this.imageUrl = imageUrl
+    this.hard = hard
   }
 }

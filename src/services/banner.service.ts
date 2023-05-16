@@ -13,7 +13,7 @@ export class BannerService {
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 
-  private apiUrl = 'http://localhost:8080/banner';
+  private apiUrl = 'https://portfolio-backend-tklx.onrender.com/banner';
 
   get(): Observable<Image> {
     return this.http.get<Image>(`${this.apiUrl}/get`);

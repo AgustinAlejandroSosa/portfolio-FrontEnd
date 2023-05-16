@@ -9,7 +9,7 @@ import { Form } from '@angular/forms';
 })
 export class ImageService {
 
-  private apiUrl = "http://localhost:8080/image"
+  private apiUrl = "https://portfolio-backend-tklx.onrender.com/image"
 
   constructor(private http: HttpClient) { }
 

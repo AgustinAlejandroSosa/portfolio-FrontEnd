@@ -8,7 +8,7 @@ import { TokenService } from './token.service';
   providedIn: 'root'
 })
 export class SkillService {
-  private apiUrl = 'http://localhost:8080/skill';
+  private apiUrl = 'https://portfolio-backend-tklx.onrender.com/skill';
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 

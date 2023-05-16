@@ -13,6 +13,6 @@ export class AuthService {
 
   login(admin: Admin): Observable<JwtDto> {
 
-    return this.http.post<JwtDto>('http://localhost:8080/login', admin)
+    return this.http.post<JwtDto>('https://portfolio-backend-tklx.onrender.com/login', admin)
   }
 }

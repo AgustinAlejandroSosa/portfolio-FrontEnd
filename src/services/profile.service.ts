@@ -9,7 +9,7 @@ import { TokenService } from './token.service';
 })
 export class ProfileService {
 
-  private apiUrl = 'http://localhost:8080/profile';
+  private apiUrl = 'https://portfolio-backend-tklx.onrender.com/profile';
 
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 
